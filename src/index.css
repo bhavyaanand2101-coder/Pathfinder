@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#050510] text-[#e0e8ff] font-sans overflow-x-hidden;
+  }
+}
+
+/* Starfield Animation */
+.starfield {
+  @apply fixed inset-0 -z-50;
+  background: radial-gradient(ellipse at bottom, #0a0e27 0%, #050510 100%);
+}
+.starfield::before {
+  content: '';
+  @apply absolute inset-0 opacity-60;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #00d4ff, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(112, 0, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent);
+  background-size: 200px 200px, 300px 300px, 150px 150px;
+  animation: starfieldMove 80s linear infinite;
+}
+
+@keyframes starfieldMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-250px); }
+}
+
+/* Logo Pulse Animation */
+.animate-logo-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 20px 60px rgba(0, 212, 255, 0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 30px 80px rgba(0, 212, 255, 0.6); }
+}
+
+/* Fade In Up */
+.animate-fadeInUp {
+  animation: fadeInUp 1s ease both;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
